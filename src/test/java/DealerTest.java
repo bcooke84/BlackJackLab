@@ -13,27 +13,26 @@ public class DealerTest {
     }
 
     @Test
-    public void getName(){
+    public void getName() {
         assertEquals("Bob", dealer.getName());
     }
 
     @Test
-    public void checkDeckHasCards(){
+    public void checkDeckHasCards() {
         assertEquals(52, dealer.getDeck().getNumberOfCards());
 
     }
 
     @Test
-    public void getHand(){
+    public void getHand() {
         assertEquals(0, dealer.cardCount());
         Card card = new Card(Suit.DIAMONDS, Rank.KING);
         dealer.receiveCard(card);
         assertEquals(1, dealer.cardCount());
-
     }
 
     @Test
-    public void dealerDealsCard(){
+    public void dealerDealsCard() {
         Player player = new Player("Bob");
         dealer.deals(player);
         assertEquals(48, dealer.getDeck().getNumberOfCards());
@@ -42,9 +41,21 @@ public class DealerTest {
     }
 
     @Test
-    public void dealerCanTwist() {
+    public void dealerTwist() {
+        Card card1 = new Card(Suit.DIAMONDS, Rank.KING);
+        Card card2 = new Card(Suit.DIAMONDS, Rank.SIX);
+        dealer.receiveCard(card1);
+        dealer.receiveCard(card2);
+        assertEquals(true, dealer.twistOrStick());
+    }
 
-        assertEquals(3, dealer.cardCount());
+    @Test
+    public void dealerStick() {
+        Card card1 = new Card(Suit.DIAMONDS, Rank.KING);
+        Card card2 = new Card(Suit.DIAMONDS, Rank.SEVEN);
+        dealer.receiveCard(card1);
+        dealer.receiveCard(card2);
+        assertEquals(false, dealer.twistOrStick());
     }
 
 }

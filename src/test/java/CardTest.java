@@ -25,7 +25,7 @@ public class CardTest {
     @Test
     public void canGetRankValue(){
         int value = card.getValueFromEnum();
-        assertEquals(1, value);
+        assertEquals(11, value);
     }
 
 }

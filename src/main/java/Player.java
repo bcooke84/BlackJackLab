@@ -14,22 +14,18 @@ public class Player {
         return name;
     }
 
-    public ArrayList<Card> getHand() {
-        return hand;
-    }
-
     public void receiveCard(Card card) {
         this.hand.add(card);
     }
 
     public int cardCount() {
-       return this.hand.size();
+        return this.hand.size();
     }
 
     public int handValue() {
         int cardCounter = 0;
         for (Card card : this.hand) {
-            cardCounter += card.getRank().getValue();
+            cardCounter += card.getValueFromEnum();
         }
         return cardCounter;
     }
